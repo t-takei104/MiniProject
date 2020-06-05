@@ -1,6 +1,6 @@
 package minipro;
 
-import java.util.HashMap;
+import java.util.List;
 
 public class ReservationCon {
 	private ReserveList reservelist;
@@ -13,8 +13,11 @@ public class ReservationCon {
 		reservelist.giveInfo(member, amount, ticket);
 	}
 
-	public HashMap<Integer, Reservation> viewReserveList() {
-		HashMap<Integer, Reservation> map = reservelist.getReserveList();
-		return map;
+	public List<Reservation> viewReserveList(int id) {
+		return reservelist.getReserveList(id);
+	}
+
+	public Reservation getReservationInfo(int id, int reserveNo) {
+		return reservelist.getReservation(id, reserveNo);
 	}
 }

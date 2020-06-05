@@ -1,12 +1,14 @@
 package Test;
 
+import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.sameInstance;
 import static org.junit.Assert.assertThat;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -21,6 +23,8 @@ public class ReserveListTest {
 	ReserveList reservelist;
 	ReservationCon rc;
 	Reservation r1;
+	Member member;
+	Ticket ticket;
 	int id;
 
 	@Before
@@ -28,31 +32,53 @@ public class ReserveListTest {
 		reservelist = new ReserveList();
 		rc = new ReservationCon(reservelist);
 
-		Member member = new Member(1, "a", "abcd");
-		Ticket ticket = new Ticket(2, "aaaa", "2020-06-05", 2000);
+		member = new Member(1111, "a", "abcd");
+		ticket = new Ticket(2, "aaaa", "2020-06-05", 2000);
 
 		Date date = new Date();
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");// 日付をyyyy-MM-ddの形にフォーマットしStringに変換
 		String formattedDate = dateFormat.format(date);
 
-		r1 = new Reservation(member, ticket, 1, formattedDate);
 		id = member.getId();
-		reservelist.setMap(member.getId(), r1);
+
+		reservelist.setReserveList(id);
+		r1 = new Reservation(member, ticket, 1, formattedDate);
+		reservelist.setReservation(id, r1);
 	}
 
 	@Test
 	public void リストが返ってくるか() {
-		// 事前準備
+		id = member.getId();
 		ReserveList ex_list = new ReserveList();
-		ex_list.setMap(id, r1);
+		ex_list.setReserveList(id);
+		ex_list.setReservation(id, r1);
 
-		// 実行
-		HashMap<Integer, Reservation> expected = ex_list.getReserveList();
+		List<Reservation> expected = ex_list.getReserveList(id);
 
-		HashMap<Integer, Reservation> actual = reservelist.getReserveList();
+		List<Reservation> actual = reservelist.getReserveList(id);
 
 		// 検証
 		assertThat(actual, is(expected));
+	}
+
+	@Test
+	public void 予約が返ってくるか() {
+		Reservation actual = r1;
+		Reservation expected = reservelist.getReservation(id, 1);
+
+		// 検証
+		assertThat(actual, is(sameInstance(expected)));
+	}
+
+	@Test
+	public void 予約の生成() {
+		reservelist.giveInfo(member, 2, ticket);
+		List<Reservation> actual = reservelist.getReserveList(id);
+
+		Reservation expected = reservelist.getReservation(id, 2);
+
+		// 検証
+		assertThat(actual, hasItem(expected));
 	}
 
 }
