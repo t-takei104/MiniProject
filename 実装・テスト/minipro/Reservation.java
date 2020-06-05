@@ -1,16 +1,25 @@
 package minipro;
 
-import java.util.Date;
-
 public class Reservation {
-	private Member menber;
 	private Ticket ticket;
+	private String menberName;
 	private int amount;
 	private int reserveNo;
-	private Date date;
+	private String date;
+	public static int reserveID = 1;
 
-	public Member getMenber() {
-		return menber;
+	public Reservation(String menberName, Ticket ticket, int amount, int reserveNo, String date) {
+		this.menberName = menberName;
+		this.ticket = ticket;
+		this.amount = amount;
+		this.reserveNo = reserveNo;
+		this.date = date;
+
+		reserveID++;
+	}
+
+	public String getMenberName() {
+		return menberName;
 	}
 
 	public Ticket getTicket() {
@@ -25,7 +34,7 @@ public class Reservation {
 		return reserveNo;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 

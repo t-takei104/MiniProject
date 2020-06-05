@@ -3,7 +3,13 @@ package minipro;
 public class Member {
 	private int id;
 	private String name;
-	private int pw;
+	private String pw;
+
+	public Member(int id, String name, String pw) {
+		this.id = id;
+		this.name = name;
+		this.pw = pw;
+	}
 
 	public int getId() {
 		return id;
@@ -13,7 +19,7 @@ public class Member {
 		return name;
 	}
 
-	public int getPw() {
+	public String getPw() {
 		return pw;
 	}
 

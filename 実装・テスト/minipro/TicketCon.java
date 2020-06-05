@@ -10,7 +10,7 @@ public class TicketCon {
 	}
 
 	public List<Ticket> viewTicket() {
-		return ticketlist.getTickets();// List<Ticket> ticketsを返す
+		return ticketlist.getTicketList();// List<Ticket> ticketsを返す
 	}
 
 }
