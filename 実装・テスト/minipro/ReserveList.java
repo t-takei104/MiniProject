@@ -12,12 +12,7 @@ public class ReserveList {
 	private HashMap<Integer, List<Reservation>> reserveMap = new HashMap<Integer, List<Reservation>>();
 
 	public void giveInfo(Member member, int amount, Ticket ticket) {// 予約を作成しMapにputする
-
-		Date date = new Date();
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");// 日付をyyyy-MM-ddの形にフォーマットしStringに変換
-		String formattedDate = dateFormat.format(date);
-
-		Reservation r = new Reservation(member, ticket, amount, formattedDate);// 予約を作成
+		Reservation r = new Reservation(member.getName(), ticket, amount);// 予約を作成
 
 		int id = member.getId();// 渡されるMemberのIDを代入
 
