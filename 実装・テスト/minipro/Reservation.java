@@ -1,24 +1,37 @@
 package minipro;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Reservation {
 	private Ticket ticket;
-	private Member member;
+	private String menberName;
 	private int amount;
 	private int reserveNo;
 	private String date;
 	public static int reserveID = 1;
 
-	public Reservation(Member menber, Ticket ticket, int amount, String date) {
-		this.member = menber;
+	
+	public Reservation(String menberName, Ticket ticket, int amount/*, int reserveNo, String date*/) {
+		this.menberName = menberName;
 		this.ticket = ticket;
 		this.amount = amount;
-		this.date = date;
+		//this.reserveNo = reserveNo;
+		//this.date = date;
+		
+		this.reserveNo = reserveID;
+		
+		Date date = new Date();
+		SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+		
+		this.date = df.format(date);
+		
 
 		reserveID++;
 	}
 
-	public Member getMenberName() {
-		return member;
+	public String getMenberName() {
+		return menberName;
 	}
 
 	public Ticket getTicket() {
@@ -38,3 +51,4 @@ public class Reservation {
 	}
 
 }
+
