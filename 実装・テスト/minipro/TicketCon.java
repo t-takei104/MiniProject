@@ -1,16 +1,19 @@
-package minipro;
+package miniproTest;
 
 import java.util.List;
 
 public class TicketCon {
-	private TicketList ticketlist;
+	private TicketList ticketList;
 
-	public void setTicketlist(TicketList ticketlist) {
-		this.ticketlist = ticketlist;
+	public TicketCon(TicketList ticketList) {
+		this.ticketList = ticketList;
 	}
 
 	public List<Ticket> viewTicket() {
-		return ticketlist.getTicketList();// List<Ticket> ticketsを返す
+		return ticketList.getTicketList();// List<Ticket> ticketsを返す
 	}
 
+	public Ticket displyTicketInfo(int ticketNo) {
+		return ticketList.getTicket(ticketNo);
+	}
 }
