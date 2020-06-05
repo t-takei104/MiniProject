@@ -1,59 +1,64 @@
-package minipro;
+package miniproTest;
 
-import org.junit.Test;
 import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
+
 import org.junit.Before;
+import org.junit.Test;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ReservationTest {
 
+	Ticket t1;
+	Reservation r;
+	
+	@Before
+	public void setUp() {
+		t1 = new Ticket(1,"event1","2020/06/05",150);
+		r = new Reservation("totoro", t1, 3);
+	}
 	
 	@Test
 	public void test1() {
-		Ticket t1 = new Ticket(10, "トトロ","2020/06/06", 1000 );
-		Reservation r = new Reservation("totoro", 3, t1);
 		
 		String actual = r.getDate();
 		
-		assertThat(actual, is());//()の中にDateの中身を入れてください
+		Date date = new Date();
+		SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+		
+		String expected = df.format(date);
+		
+		assertThat(actual, is(expected));//()の中にDateの中身を入れてください
 	}
 	
 	@Test
 	public void test2() {
-		Ticket t1 = new Ticket(10, "トトロ","2020/06/06", 1000 );
-		Reservation r = new Reservation("totoro", 3, t1);
-		
-		String actual = r.getAmount();
+		int actual = r.getAmount();
 		
 		assertThat(actual, is(3));
 	}
 	
 	@Test
 	public void test3() {
-		Ticket t1 = new Ticket(10, "トトロ","2020/06/06", 1000 );
-		Reservation r = new Reservation("totoro", 3, t1);
+		int actual = r.getReserveNo();
 		
-		String actual = r.getReserveNo();
-		
-		assertThat(actual, is(1));
+		assertThat(actual, is(3));
 	}
 	
 	@Test
 	public void test4() {
-		Ticket t1 = new Ticket(10, "トトロ","2020/06/06", 1000 );
-		Reservation r = new Reservation("totoro", 3, t1);
-		
-		String actual = r.getMemberName();
+		String actual = r.getMenberName();
 		
 		assertThat(actual, is("totoro"));
 	}
 	
 	@Test
 	public void test5() {
-		Ticket t1 = new Ticket(10, "トトロ","2020/06/06", 1000 );
-		Reservation r = new Reservation("totoro", 3, t1);
-		
-		String actual = r.getTicket();
+		Ticket actual = r.getTicket();
 		
 		assertThat(actual, is(t1));
 	}
+	
 }
