@@ -2,24 +2,23 @@ package minipro;
 
 public class Reservation {
 	private Ticket ticket;
-	private String menberName;
+	private Member member;
 	private int amount;
 	private int reserveNo;
 	private String date;
 	public static int reserveID = 1;
 
-	public Reservation(String menberName, Ticket ticket, int amount, int reserveNo, String date) {
-		this.menberName = menberName;
+	public Reservation(Member menber, Ticket ticket, int amount, String date) {
+		this.member = menber;
 		this.ticket = ticket;
 		this.amount = amount;
-		this.reserveNo = reserveNo;
 		this.date = date;
 
 		reserveID++;
 	}
 
-	public String getMenberName() {
-		return menberName;
+	public Member getMenberName() {
+		return member;
 	}
 
 	public Ticket getTicket() {
