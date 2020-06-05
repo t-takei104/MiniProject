@@ -1,26 +1,26 @@
 package minipro;
 
 public class Member {
-	private int id;
-	private String name;
+	private String id;
 	private String pw;
+	private String name;
 
-	public Member(int id, String name, String pw) {
+	public Member(String id, String pw, String name) {
 		this.id = id;
-		this.name = name;
 		this.pw = pw;
+		this.name = name;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
-	}
-
-	public String getName() {
-		return name;
 	}
 
 	public String getPw() {
 		return pw;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 }
