@@ -1,4 +1,4 @@
-package miniproTest;
+package minipro;
 
 public class Ticket {
 	private int stock;

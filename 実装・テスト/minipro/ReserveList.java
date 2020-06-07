@@ -1,9 +1,6 @@
 package minipro;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,7 +11,7 @@ public class ReserveList {
 	public void giveInfo(Member member, int amount, Ticket ticket) {// 予約を作成しMapにputする
 		Reservation r = new Reservation(member.getName(), ticket, amount);// 予約を作成
 
-		int id = member.getId();// 渡されるMemberのIDを代入
+		int id = Integer.parseInt(member.getId());// 渡されるMemberのIDを代入
 
 		reserveMap.get(id).add(r);
 	}

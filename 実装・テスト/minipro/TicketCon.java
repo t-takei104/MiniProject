@@ -1,4 +1,4 @@
-package miniproTest;
+package minipro;
 
 import java.util.List;
 
