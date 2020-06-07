@@ -39,7 +39,7 @@ public class TicketConTest {
 	@Test
 	public void test2() {
 		
-		Ticket actual = tCon.displyTicketInfo(0);
+		Ticket actual = tCon.displyTicketInfo(1);
 		
 		Ticket expected = t1;
 		
@@ -48,9 +48,9 @@ public class TicketConTest {
 	}
 	
 	@Test
-	public void tes3t() {
+	public void test3() {
 		
-		Ticket actual = tCon.displyTicketInfo(1);
+		Ticket actual = tCon.displyTicketInfo(2);
 		
 		Ticket expected = t2;
 		
