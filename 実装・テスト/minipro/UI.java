@@ -94,8 +94,8 @@ public class UI {
 		int count = 0;
 		for(Ticket ticket : list) {
 			//全チケットのチケット番号とチケット名を表示
-			System.out.print(ticket.getTicketNo() + ":");
-			System.out.println(ticket.getEvent());
+			System.out.print("チケット番号:" + ticket.getTicketNo() + ":");
+			System.out.println("チケット名:" + ticket.getEvent());
 			count++;
 		}
 		System.out.println("チケット番号:チケットの詳細へ");
@@ -115,11 +115,11 @@ public class UI {
 	private void displayTicketInfo(int ticketNo) {
 		//詳細を表示したいチケットを取得
 		ticket = ticketCon.getTicketInfo(ticketNo);
-		System.out.println(ticket.getTicketNo());
-		System.out.println(ticket.getEvent());
-		System.out.println(ticket.getPrice());
-		System.out.println(ticket.getDate());
-		System.out.println(ticket.getStock());
+		System.out.println("チケット番号:" + ticket.getTicketNo());
+		System.out.println("チケット名:" + ticket.getEvent());
+		System.out.println("値段:" + ticket.getPrice());
+		System.out.println("日付:" + ticket.getDate());
+		System.out.println("在庫数:" + ticket.getStock());
 		//予約確認メニューを表示
 		this.ticketMenu();
 	}
@@ -154,7 +154,7 @@ public class UI {
 			this.showMenu();
 		}else {
 			System.out.println("在庫枚数を超えています");
-			//予約確認メールを表示
+			//予約確認を表示
 			this.ticketMenu();
 		}
 	}
@@ -169,9 +169,9 @@ public class UI {
 			int count = 0;
 			for(Reservation reservation : reservationList) {
 				//全予約の予約番号、チケット名、日付を表示
-				System.out.println(reservation.getReserveNo());
-				System.out.println(reservation.getTicket().getEvent());
-				System.out.println(reservation.getDate());
+				System.out.println("予約番号:" + reservation.getReserveNo());
+				System.out.println("チケット名:" + reservation.getTicket().getEvent());
+				System.out.println("日付:" + reservation.getDate());
 				count++;
 			}
 			System.out.println("予約番号:予約の詳細へ");
@@ -197,11 +197,11 @@ public class UI {
 	private void displayResrvationInfo(int reserveNo) {
 		//詳細を表示したい予約を取得
 		Reservation reservation = reservationCon.getReservationInfo(member.getId(), reserveNo);
-		System.out.println(reservation.getReserveNo());
-		System.out.println(reservation.getMenberName());
-		System.out.println(reservation.getTicket().getEvent());
-		System.out.println(reservation.getDate());
-		System.out.println(reservation.getAmount());
+		System.out.println("予約番号:" + reservation.getReserveNo());
+		System.out.println("会員名:" + reservation.getMenberName());
+		System.out.println("チケット名:" + reservation.getTicket().getEvent());
+		System.out.println("日付:" + reservation.getDate());
+		System.out.println("予約枚数:" + reservation.getAmount());
 		System.out.println("1:予約一覧に戻る");
 		System.out.println("1以外:メニューに戻る");
 		//入力
