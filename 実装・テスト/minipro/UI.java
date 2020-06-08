@@ -94,21 +94,27 @@ public class UI {
 		int count = 0;
 		for(Ticket ticket : list) {
 			//全チケットのチケット番号とチケット名を表示
-			System.out.print("チケット番号:" + ticket.getTicketNo() + ":");
+			System.out.println("チケット番号:" + ticket.getTicketNo());
 			System.out.println("チケット名:" + ticket.getEvent());
 			count++;
 		}
 		System.out.println("チケット番号:チケットの詳細へ");
 		System.out.println("それ以外:メニューへ");
-		//チケット番号の入力
-		int ticketNo = Integer.parseInt(this.stream());
-		//入力がチケットの種類数count以下ならば
-		if(ticketNo >= 1 && ticketNo <= count) {
-			//チケットの詳細表示
-			this.displayTicketInfo(ticketNo);
-		}else {
+		try {
+			//チケット番号の入力
+			int ticketNo = Integer.parseInt(this.stream());
+			//入力がチケットの種類数count以下ならば
+			if(ticketNo >= 1 && ticketNo <= count) {
+				//チケットの詳細表示
+				this.displayTicketInfo(ticketNo);
+			}else {
+				this.showMenu();
+			}
+		}catch(NumberFormatException e) {
+			System.out.println("数字を入力してください");
 			this.showMenu();
 		}
+		
 	}
 	
 	//チケットの詳細表示
@@ -130,15 +136,21 @@ public class UI {
 		System.out.println("1以外:一覧に戻る");
 		//入力
 		String input = this.stream();
-		if(input.equals("1")) {
-			System.out.println("枚数を入力");
-			int amount = Integer.parseInt(this.stream());
-			//予約
-			this.reserve(amount);
-		}else {
-			//一覧に戻る
-			this.displayTicketList();
+		try {
+			if(input.equals("1")) {
+				System.out.println("枚数を入力");
+				int amount = Integer.parseInt(this.stream());
+				//予約
+				this.reserve(amount);
+			}else {
+				//一覧に戻る
+				this.displayTicketList();
+			}
+		}catch(NumberFormatException e) {
+			System.out.println("数字を入力してください");
+			this.showMenu();
 		}
+		
 	}
 	
 	//予約する
@@ -176,13 +188,18 @@ public class UI {
 			}
 			System.out.println("予約番号:予約の詳細へ");
 			System.out.println("それ以外:メニューへ");
-			//入力
-			int reserveNo = Integer.parseInt(this.stream());
-			//入力が予約の種類数count以下ならば
-			if(reserveNo >= 1 && reserveNo <= count) {
-				this.displayResrvationInfo(reserveNo);
-			}else {
-				//メニュー表示
+			try {
+				//入力
+				int reserveNo = Integer.parseInt(this.stream());
+				//入力が予約の種類数count以下ならば
+				if(reserveNo >= 1 && reserveNo <= count) {
+					this.displayResrvationInfo(reserveNo);
+				}else {
+					//メニュー表示
+					this.showMenu();
+				}
+			}catch(NumberFormatException e) {
+				System.out.println("数字を入力してください");
 				this.showMenu();
 			}
 		//予約リストに予約がないとき
