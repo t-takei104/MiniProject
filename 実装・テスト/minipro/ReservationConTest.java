@@ -12,26 +12,20 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import minipro.Member;
-import minipro.Reservation;
-import minipro.ReservationCon;
-import minipro.ReserveList;
-import minipro.Ticket;
-
 public class ReservationConTest {
 	ReserveList reservelist;
 	ReservationCon rc;
 	Reservation r1, r2, r3;
 	Member member;
 	Ticket ticket1, ticket2, ticket3;
-	int id;
+	String id;
 
 	@Before
 	public void setUp() {
 		reservelist = new ReserveList();
 		rc = new ReservationCon(reservelist);
 
-		member = new Member(1111, "a", "abcd");
+		member = new Member("1111", "a", "abcd");
 		ticket1 = new Ticket(10, "トトロ", "2020/06/06", 1000);
 		ticket2 = new Ticket(20, "bbbb", "2020-06-05", 4000);
 		ticket3 = new Ticket(20, "cccc", "2020-06-05", 5000);
