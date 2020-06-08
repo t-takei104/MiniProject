@@ -10,8 +10,8 @@ public class Main {
 		
 		//コントローラー作成
 		Login login = new Login(memberlist);
-		TicketCon ticketCon = new TicketCon();//引数必要
-		ReservationCon reservationCon = new ReservationCon();//引数必要
+		TicketCon ticketCon = new TicketCon(ticketList);
+		ReservationCon reservationCon = new ReservationCon(reserveList);
 		
 		//UI作成
 		UI ui = new UI(login, ticketCon, reservationCon);

@@ -13,7 +13,7 @@ public class TicketCon {
 		return ticketList.getTicketList();// List<Ticket> ticketsを返す
 	}
 
-	public Ticket displyTicketInfo(int ticketNo) {
+	public Ticket getTicketInfo(int ticketNo) {
 		return ticketList.getTicket(ticketNo);
 	}
 }

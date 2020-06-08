@@ -39,8 +39,8 @@ public class Ticket {
 		return price;
 	}
 
-	public void plusStock(int amount) {
-		stock += amount;
+	public void minusStock(int amount) {
+		stock -= amount;
 	}
 
 }

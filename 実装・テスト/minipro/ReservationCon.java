@@ -13,11 +13,11 @@ public class ReservationCon {
 		reservelist.giveInfo(member, amount, ticket);
 	}
 
-	public List<Reservation> viewReserveList(int id) {
+	public List<Reservation> viewReserveList(String id) {
 		return reservelist.getReserveList(id);
 	}
 
-	public Reservation getReservationInfo(int id, int reserveNo) {
+	public Reservation getReservationInfo(String id, int reserveNo) {
 		return reservelist.getReservation(id, reserveNo);
 	}
 }
